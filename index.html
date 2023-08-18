@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Algherbs</title>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
@@ -23,12 +24,12 @@
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-        <div>
-            go to <a href="https://www.algebiz.net">www.algebiz.net</a>
-        </div>
-        <div>
-            hello morning 
-        </div>
+    <div>
+        go to <a href="https://www.algebiz.net">www.algebiz.net</a>
+    </div>
+    <div>
+        hello morning
+    </div>
 
     <!-- Your parent page content -->
     <iframe id="childFrame" src="https://www.algebiz.net/" style="width:100%; height:100%"> </iframe>
@@ -45,17 +46,17 @@
 
         window.addEventListener('message', handleIframeButtonClick, false);
 
-        function handleIframeButtonClick(event) {
+        function handleSearchEnter(event) {
             if (event.data === 'HomeSearch') {
                 // Trigger the Google Tag Manager custom event
                 dataLayer.push({ 'event': 'HomeSearch' });
             }
         }
 
-        window.addEventListener('message', handleIframeButtonClick, false);
+        window.addEventListener('message', handleSearchEnter, false);
     </script>
 
-
+    
 </body>
 
 </html>
