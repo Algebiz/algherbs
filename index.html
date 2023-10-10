@@ -60,7 +60,7 @@
     Phone: <input type="text" name="phone_number">
     <input type="hidden" id="GACLIENTID" name="GACLIENTID" value="">
     <!-- <input type="hidden" id="GAUSERID" name="GAUSERID" value=""> -->
-    <input type="hidden" id="GATRACKID" name="GATRACKID" value="G-2MN7PDGPTG">
+    <!-- <input type="hidden" id="GATRACKID" name="GATRACKID" value="G-2MN7PDGPTG"> -->
     <input type="submit">
 </form>
 
@@ -81,14 +81,15 @@ function get_ga_clientid() {
 <script type="text/javascript">
     document.getElementById('my_form').addEventListener(
     'submit', function(event) {
-      ga(function() { 
-        var tracker = ga.getAll()[0];
-        var clientId = tracker.get('clientId');
+    //   ga(function() { 
+    //     var tracker = ga.getAll()[0];
+    //     var clientId = tracker.get('clientId');
         document.getElementById('GACLIENTID').value = get_ga_clientid();
         // var userId = tracker.get('userId'); 
         // document.getElementById('GAUSERID').value = userId; 
-      });
-    });
+    //   });
+     }
+    );
 </script>
 
     
