@@ -32,9 +32,18 @@
     <!-- Your parent page content -->
     <iframe id="childFrame" src="https://www.algebiz.net/" style="width:100%; height:100%"> </iframe>
 
+    <!-- Lead Form -->
+    <form action="" name="myForm" id="my_form">
+        Phone: <input type="text" name="phone_number">
+        <input type="hidden" id="GACLIENTID" name="GACLIENTID" value="">
+        <input type="hidden" id="GCLID" name="GCLID" value="">
+        <!-- <input type="hidden" id="GATRACKID" name="GATRACKID" value="G-2MN7PDGPTG"> -->
+        <input type="submit">
+    </form>
+
+
     <!-- Parent Page JavaScript -->
     <script>
-
         function handleIframeButtonClick(event) {
             if (event.data === 'iframeButtonClick') {
                 // Trigger the Google Tag Manager custom event
@@ -54,54 +63,24 @@
         window.addEventListener('message', handleSearchEnter, false);
     </script>
 
-    <form action="" name="myForm" id="my_form">
-        Phone: <input type="text" name="phone_number">
-        <input type="hidden" id="GACLIENTID" name="GACLIENTID" value="">
-        <input type="hidden" id="GCLID" name="GCLID" value="">
-        <!-- <input type="hidden" id="GAUSERID" name="GAUSERID" value=""> -->
-        <!-- <input type="hidden" id="GATRACKID" name="GATRACKID" value="G-2MN7PDGPTG"> -->
-        <input type="submit">
-    </form>
-
     <script>
-    function get_ga_clientid() {
-        var cookie = {};
-        document.cookie.split(';').forEach(function(el) {
-        var splitCookie = el.split('=');
-        var key = splitCookie[0].trim();
-        var value = splitCookie[1];
-        cookie[key] = value;
-        });
-    return cookie["_ga"].substring(6);
-    }
+        function get_cookie(params,subs) {
+            var cookie = {};
+            document.cookie.split(';').forEach(function(el) {
+            var splitCookie = el.split('=');
+            var key = splitCookie[0].trim();
+            var value = splitCookie[1];
+            cookie[key] = value;
+            });
+        return cookie[params].substring(subs);
+        }
     </script>
-
-
-<script>
-    function get_gclid() {
-        var cookie = {};
-        document.cookie.split(';').forEach(function(el) {
-        var splitCookie = el.split('=');
-        var key = splitCookie[0].trim();
-        var value = splitCookie[1];
-        cookie[key] = value;
-        });
-    return cookie["_gcl_aw"].substring(15);
-    }
-    </script>
-
 
     <script type="text/javascript">
         document.getElementById('my_form').addEventListener(
         'submit', function(event) {
-        //   ga(function() { 
-        //     var tracker = ga.getAll()[0];
-        //     var clientId = tracker.get('clientId');
-            document.getElementById('GACLIENTID').value = get_ga_clientid();
-            document.getElementById('GCLID').value=get_gclid();
-            // var userId = tracker.get('userId'); 
-            // document.getElementById('GAUSERID').value = userId; 
-        //   });
+            document.getElementById('GACLIENTID').value = get_cookie('_ga',6);
+            document.getElementById('GCLID').value = get_cookie('_gcl_aw',15);
         }
         );
     </script>
@@ -110,6 +89,3 @@
 </body>
 
 </html>
-
-
-
