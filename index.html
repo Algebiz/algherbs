@@ -54,45 +54,63 @@
         window.addEventListener('message', handleSearchEnter, false);
     </script>
 
+    <form action="" name="myForm" id="my_form">
+        Phone: <input type="text" name="phone_number">
+        <input type="hidden" id="GACLIENTID" name="GACLIENTID" value="">
+        <input type="hidden" id="GCLID" name="GCLID" value="">
+        <!-- <input type="hidden" id="GAUSERID" name="GAUSERID" value=""> -->
+        <!-- <input type="hidden" id="GATRACKID" name="GATRACKID" value="G-2MN7PDGPTG"> -->
+        <input type="submit">
+    </form>
 
+    <script>
+    function get_ga_clientid() {
+        var cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+        var splitCookie = el.split('=');
+        var key = splitCookie[0].trim();
+        var value = splitCookie[1];
+        cookie[key] = value;
+        });
+    return cookie["_ga"].substring(6);
+    }
+    </script>
 
-<form action="" name="myForm" id="my_form">
-    Phone: <input type="text" name="phone_number">
-    <input type="hidden" id="GACLIENTID" name="GACLIENTID" value="">
-    <!-- <input type="hidden" id="GAUSERID" name="GAUSERID" value=""> -->
-    <!-- <input type="hidden" id="GATRACKID" name="GATRACKID" value="G-2MN7PDGPTG"> -->
-    <input type="submit">
-</form>
 
 <script>
-function get_ga_clientid() {
-    var cookie = {};
-    document.cookie.split(';').forEach(function(el) {
-      var splitCookie = el.split('=');
-      var key = splitCookie[0].trim();
-      var value = splitCookie[1];
-      cookie[key] = value;
-    });
-  return cookie["_ga"].substring(6);
-  }
-</script>
+    function get_gclid() {
+        var cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+        var splitCookie = el.split('=');
+        var key = splitCookie[0].trim();
+        var value = splitCookie[1];
+        cookie[key] = value;
+        });
+    // return cookie["__gcl_dc"].substring(15);
+        return 12;
+    }
+    </script>
 
 
-<script type="text/javascript">
-    document.getElementById('my_form').addEventListener(
-    'submit', function(event) {
-    //   ga(function() { 
-    //     var tracker = ga.getAll()[0];
-    //     var clientId = tracker.get('clientId');
-        document.getElementById('GACLIENTID').value = get_ga_clientid();
-        // var userId = tracker.get('userId'); 
-        // document.getElementById('GAUSERID').value = userId; 
-    //   });
-     }
-    );
-</script>
+    <script type="text/javascript">
+        document.getElementById('my_form').addEventListener(
+        'submit', function(event) {
+        //   ga(function() { 
+        //     var tracker = ga.getAll()[0];
+        //     var clientId = tracker.get('clientId');
+            document.getElementById('GACLIENTID').value = get_ga_clientid();
+            document.getElementById('GCLID').value=get_gclid();
+            // var userId = tracker.get('userId'); 
+            // document.getElementById('GAUSERID').value = userId; 
+        //   });
+        }
+        );
+    </script>
 
     
 </body>
 
 </html>
+
+
+
