@@ -16,7 +16,7 @@
         // Default ad_storage to 'denied'.
         gtag('consent', 'default', {
           'ad_storage': 'denied',
-          'analytics_storage':'granted'
+          'analytics_storage':'denied'
         });
     </script>
 
@@ -32,12 +32,13 @@
         })(window, document, 'script', 'dataLayer', 'GTM-KKH75RFN');</script>
     <!-- End Google Tag Manager -->
 
+  
 
     <script>
         function consentGranted() {
           gtag('consent', 'update', {
             'ad_storage': 'granted',
-            'analytics_storage':'denied'
+            'analytics_storage':'granted'
           });
         }
     </script>
